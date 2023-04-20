@@ -23,7 +23,7 @@ async def downloader(message: Message, link: str,total,name):
   while (not handle.has_metadata()):    
     await asyncio.sleep(1)
 
-  await r.edit(f'Got Metadata, Starting Download Of **{str(name)}**...')
+  await r.edit(f'Got Metadata, Starting Download Of **{name}**...')
 
   trgt = str(handle.name())
 
