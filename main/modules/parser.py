@@ -17,7 +17,7 @@ def trim_title(title: str):
     return title
 
 def parse():
-    a = feedparser.parse("https://subsplease.org/rss/?r=1080")
+    a = feedparser.parse("https://www.tokyotosho.info/rss.php?filter=1&maxMB=1950&submitter=SubsPlease&terms=1080p&reversepolarity=1")
     b = a["entries"]
     b = b[0:10]
     data = []    
@@ -25,7 +25,6 @@ def parse():
     for i in b:
         item = {}
         item['title'] = trim_title(i['title'])
-        item['size'] = i['subsplease_size']
         item['link'] = i['link']
         data.append(item)
     data.reverse()
