@@ -103,9 +103,6 @@ async def start_uploading(data):
         title = title.replace("Dr. Stone S3", "Dr Stone New World")
         title = title.replace("Opus.COLORs", "Opus COLORs")
         link = data["link"]
-
-        size = data["size"]
-
         name, ext = title.split(".")
 
         name += f" @animxt." + ext
@@ -121,7 +118,7 @@ async def start_uploading(data):
 
         await status.edit(await status_text(f"Downloading {name}"),reply_markup=button1)
 
-        file = await downloader(msg,link,size,title)
+        file = await downloader(msg,link,title)
 
         await msg.edit(f"Download Complete : {name}")
 
@@ -187,7 +184,7 @@ async def start_uploading(data):
 
         message_id = int(msg.message_id) + 1
 
-        video = await upload_video(msg,fpath,id,tit,name,size)   
+        video = await upload_video(msg,fpath,id,tit,name)   
 
         try:
 
