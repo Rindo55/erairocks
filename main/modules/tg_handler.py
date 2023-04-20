@@ -98,10 +98,6 @@ async def start_uploading(data):
     try:
 
         title = data["title"]
-        title = title.replace("Shinka", "Shin Shinka")
-        title = title.replace("Ijiranaide, Nagatoro-san S2", "Ijiranaide, Nagatoro-san 2")
-        title = title.replace("Dr. Stone S3", "Dr Stone New World")
-        title = title.replace("Opus.COLORs", "Opus COLORs")
         link = data["link"]
         name, ext = title.split(".")
 
@@ -129,7 +125,6 @@ async def start_uploading(data):
         filed = os.path.basename(file)
         filed = filed.rsplit(' ', 1)[0]
         filed = filed.replace("[SubsPlease]", "")
-        filed = filed.replace("Shinka", "Shin Shinka")
         filed = filed.replace("(1080p)", "[1080p Web-DL].mkv")
         bpath = "downloads/" + filed
         ghostname = name
