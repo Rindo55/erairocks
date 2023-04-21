@@ -5,7 +5,7 @@ from main.inline import button2
 from pyrogram.types import Message
 from config import STATUS_ID, INDEX_ID, UPLOADS_ID, SCHEDULE_ID, UPLOADS_USERNAME
 
-GHOST_ID = -1001948444792
+GHOST_ID = -1001159872623
 IST_ID = 15849
 US_ID = 15858
 schedule = app.get_messages(GHOST_ID,IST_ID)
