@@ -17,6 +17,7 @@ def trim_title(title: str):
     return title
 
 def trim_link(nyaa_infohash: str):
+    
     magnet = "magnet:?xt=urn:btih:"
     link = magnet + nyaa_infohash
 
@@ -30,7 +31,7 @@ def parse():
         item = {}
         item['title'] = trim_title(i['title'])
         item['size'] = i['nyaa_size']
-        item['link'] = trim_link(i['nyaa_infohash'])
+        item['link'] = f"magnet:?xt=urn:btih:{(i['nyaa_infohash']})"
         data.append(item)
     data.reverse()
     return data
