@@ -213,7 +213,7 @@ async def start_uploading(data):
         await status.edit(await status_text(f"Uploading {name }"),reply_markup=button1)
 
         message_id = int(msg.message_id) + 1
-        video = await upload_video(msg,fpath,id,tit,name,size) 
+        video = await upload_video(msg,fpath,id,tit,name,size,subtitle) 
         try:
 
             os.remove("video.mkv")
