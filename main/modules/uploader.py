@@ -69,7 +69,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,subtitle):
 
             ])
             filed = os.path.basename(file)
-            filed = filed.replace("[1080p][Multiple", "[720p x265].mkv")
+            filed = filed.replace("[1080p][Multiple", "[720p x265]")
             fukpath = "downloads/" + filed
             caption = f"{name}"
             caption = caption.replace("[1080p][Multiple", "") 
