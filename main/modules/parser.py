@@ -18,6 +18,7 @@ def trim_title(title: str):
 def multi_sub(title: str):
     subtitle = title.rfind(" ")
     subtitle = subtitle[subtitle+1:]
+    subtitle = lastWord(subtitle)
     return subtitle
 
 def parse():
