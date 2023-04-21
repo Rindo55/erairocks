@@ -16,8 +16,8 @@ def trim_title(title: str):
     return title
 
 def multi_sub(title: str):
-    title = title.rfind(" ")
-    return title[title+1:]
+    subtitle = title.rfind(" ")
+    return subtitle[subtitle+1:]
 
 def parse():
     a = feedparser.parse("https://siftrss.com/f/wzoR90809W")
