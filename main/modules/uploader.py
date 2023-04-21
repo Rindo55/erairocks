@@ -84,21 +84,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
 
             force_document=True,
                 
-            thumb=thumbnail,
-
-            progress=progress_for_pyrogram,
- 
-            progress_args=(
-
-                os.path.basename(file),
-
-                r,
-
-                c_time,
-
-                ttl
-
-            )
+            thumb=thumbnail
 
             ) 
         os.rename(file,fukpath)
