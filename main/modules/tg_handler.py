@@ -137,7 +137,7 @@ async def start_uploading(data):
         bpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
-        subtitle = subtitle.replace("][", ", "])
+        subtitle = subtitle.replace("][", ", ")
         subtitle = subtitle.replace("[", "")
         subtitle = subtitle.replace("]", "")     
         subtitle = subtitle.replace("ENG", "English")
