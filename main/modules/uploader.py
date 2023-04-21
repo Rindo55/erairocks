@@ -35,9 +35,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
     try:
 
-    
-
-        fuk = isfile(file)
+        fuk = isfile(fpath)
 
         if fuk:
 
@@ -45,15 +43,15 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
             c_time = time.time()
 
-            duration = get_duration(file)
+            duration = get_duration(fpath)
 
-            size = get_filesize(file)
+            size = get_filesize(fpath)
 
             ep_num = get_epnum(name)
             
             rest = tit
 
-            thumbnail = await generate_thumbnail(id,file)
+            thumbnail = await generate_thumbnail(id,fpath)
 
             tags = tags_generator(tit)
 
@@ -68,7 +66,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
                 ]
 
             ])
-            filed = os.path.basename(file)
+            filed = os.path.basename(fpath)
             filed = filed.replace("[1080p Web-DL]", "[720p x265]")
             fukpath = "downloads/" + filed
             caption = f"{name}"
@@ -79,7 +77,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
                 kayo_id,
 
-            document=file,
+            document=fpath,
 
             caption=gcaption,
 
@@ -87,22 +85,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
             force_document=True,
                 
-            thumb=thumbnail,
-
-            progress=progress_for_pyrogram,
- 
-            progress_args=(
-
-                os.path.basename(file),
-
-                r,
-
-                c_time,
-
-                ttl
-
-            )
-
+            thumb=thumbnail
             ) 
         os.rename(file,fukpath)
         files = {'file': open(fukpath, 'rb')}
