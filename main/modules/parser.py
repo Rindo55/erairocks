@@ -16,9 +16,9 @@ def trim_title(title: str):
     return title
 
 def multi_sub(title: str):
-    subtitle = list(title.split(" "))
-    subtitle = len(subtitle)
-    return subtitle[subtitle-1]
+    title = list(title.split(" "))
+    title = len(title)
+    return title[title-1]
 
 def parse():
     a = feedparser.parse("https://siftrss.com/f/wzoR90809W")
