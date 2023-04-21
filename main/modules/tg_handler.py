@@ -215,7 +215,7 @@ async def start_uploading(data):
 
         message_id = int(msg.message_id) + 1
 
-        video = await upload_video(msg,fpath,id,tit,name,size)   
+        video = await upload_video(msg,file,fpath,id,tit,name,size)   
 
         try:
 
