@@ -143,6 +143,7 @@ async def start_uploading(data):
         subtitle = subtitle.replace("ENG", "English")
         subtitle = subtitle.replace("POR-BR", "Portuguese (Brazil)")
         subtitle = subtitle.replace("SPA-LA", "Spanish (Latin America)")
+        subtitle = subtitle.replace("SPA", "Spanish")
         subtitle = subtitle.replace("ARA", "Arabic")
         subtitle = subtitle.replace("FRE", "French")
         subtitle = subtitle.replace("GER", "German")
@@ -212,7 +213,7 @@ async def start_uploading(data):
 
         message_id = int(msg.message_id) + 1
 
-        video = await upload_video(msg,fpath,id,tit,name,size)   
+        video = await upload_video(msg,fpath,id,tit,name,size,subtitle)   
 
         try:
 
