@@ -9,9 +9,8 @@ from main import queue
 from main.inline import button1
 
 def trim_title(title: str):
-    title, ext = title.replace("[SubsPlease]","").strip().split("[",maxsplit=2)
-    _, ext = ext.split("]",maxsplit=2)
-    title = title.strip() + ext
+    title, ext = title.replace("[Erai-raws]",""), ext = ext.split("]",maxsplit=2)
+    title = title + ext
     title = title.replace("Ijiranaide, Nagatoro-san S2", "Ijiranaide, Nagatoro-san 2")
     title = title.replace("Shinka", "Shin Shinka")
     return title
