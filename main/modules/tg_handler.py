@@ -105,7 +105,7 @@ async def start_uploading(data):
         link = data["link"]
 
         size = data["size"]
-
+        subtitle = data["subtitle"]
         name, ext = title.split(".")
 
         name += f" @animxt." + ext
@@ -134,13 +134,13 @@ async def start_uploading(data):
         filed = filed.rsplit(' ', 1)[0]
         filed = filed.replace("[Erai-raws]", "")
         filed = filed.replace("Shinka", "Shin Shinka")
-        filed = filed.replace("[1080p] [Multiple Subtitle]", "[1080p Web-DL].mkv")
+        filed = filed.replace("[1080p][Multiple Subtitle]", "[1080p Web-DL].mkv")
         bpath = "downloads/" + filed
         ghostname = name
-        ghostname = ghostname.replace("[1080p] [Multiple Subtitle]", "")
+        ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
         subtitle = data["subtitle"]
         main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
-        guessname = f"**{ghostname}**" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + "English" + "\n" + f"__({tit})__" + "\n"+ "#Source #WebDL"
+        guessname = f"**{ghostname}**" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + subtitle + "\n" + f"__({tit})__" + "\n"+ "#Source #WebDL"
         
         thumbnail = await generate_thumbnail(id,file)
 
