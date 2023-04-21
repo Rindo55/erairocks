@@ -31,7 +31,7 @@ from pyrogram.errors import FloodWait
 
 from main.inline import button1
 
-async def upload_video(msg: Message,file,id,tit,name,ttl):
+async def upload_video(msg: Message,fpath,id,tit,name,ttl):
 
     try:
 
