@@ -135,9 +135,11 @@ async def start_uploading(data):
         filed = filed.replace("[Erai-raws]", "")
         filed = filed.replace("Shinka", "Shin Shinka")
         filed = filed.replace("[1080p][Multiple", "[1080p Web-DL].mkv")
+        filed = filed.replace("[1080p]", "[1080p Web-DL].mkv")
         bpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
+        ghostname = ghostname.replace("[1080p]", "")
         subtitle = subtitle.replace("][", ", ")
         subtitle = subtitle.replace("[", "")
         subtitle = subtitle.replace("]", "")     
