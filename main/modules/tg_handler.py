@@ -171,7 +171,7 @@ async def start_uploading(data):
         
         thumbnail = await generate_thumbnail(id,file)
 
-        videox = await app.send_document(
+        video = await app.send_document(
 
                 KAYO_ID,
 
@@ -186,17 +186,17 @@ async def start_uploading(data):
             thumb=thumbnail
 
             )        
-        videox_id = videox.message_id
-        videox_id = int(videox_id)
+        video_id = video.message_id
+        video_id = int(video_id)
         
         os.rename(file,"video.mkv")
 
 
         
 
-        compressed = await compress_video(duration,videox,name,guessname)
+        compressed = await compress_video(duration,video,name,guessname)
         
-        dingdong = await videox.edit(guessname)
+        dingdong = await video.edit(guessname)
 
 
         if compressed == "None" or compressed == None:
@@ -215,7 +215,7 @@ async def start_uploading(data):
 
         message_id = int(msg.message_id) + 1
 
-        video = await upload_video(msg,file,fpath,id,tit,name,size)   
+        video = await upload_video(msg,fpath,id,tit,name,size)   
 
         try:
 
