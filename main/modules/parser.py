@@ -16,11 +16,9 @@ from main.modules.utils import status_text
 
 def trim_title(title: str):
 
-    title, ext = title.replace("[Magnet]", "").strip().split("[", maxsplit=2)
+    title = title.replace("[Magnet]", "")
 
-    _, ext = ext.split("]", maxsplit=2)
-
-    title = title.strip() + ext
+    ext = ".mkv"
 
     return title
 
