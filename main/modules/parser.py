@@ -24,7 +24,7 @@ def trim_link(nyaa_infohash: str):
 def parse():
     a = feedparser.parse("https://nyaa.si/?page=rss&q=SubsPlease%201080p")
     b = a["entries"]
-    b = b[0:2]
+    b = b[0:4]
     data = []    
 
     for i in b:
