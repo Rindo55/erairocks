@@ -134,10 +134,14 @@ async def start_uploading(data):
         filed = filed.replace("[Erai-raws]", "")
         filed = filed.replace("[1080p][Multiple Subtitle]", "[1080p Web-DL]")
         filed = filed.replace("[1080p]", "[1080p Web-DL]")
+        filed = filed.replace("2nd Season", "S2")
+        filed = filed.replace("3rd Season", "S3")
         fpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
         ghostname = ghostname.replace("[1080p]", "")
+        ghostname = ghostname.replace("2nd Season", "S2")
+        ghostname = ghostname.replace("3rd Season", "S3")
         subtitle = subtitle.replace("][", ", ")
         subtitle = subtitle.replace("[", "")
         subtitle = subtitle.replace("]", "")     
