@@ -105,7 +105,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,subtitle):
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fukpath, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = ff"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
+        gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
         gofinal = requests.get(gotn_url)
         go_text = gofinal.text
         gourl = go_text
