@@ -35,7 +35,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
     try:
 
-        fuk = isfile(fpath)
+        fuk = isfile(file)
 
         if fuk:
 
@@ -43,15 +43,15 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
             c_time = time.time()
 
-            duration = get_duration(fpath)
+            duration = get_duration(file)
 
-            size = get_filesize(fpath)
+            size = get_filesize(file)
 
             ep_num = get_epnum(name)
             
             rest = tit
 
-            thumbnail = await generate_thumbnail(id,fpath)
+            thumbnail = await generate_thumbnail(id,file)
 
             tags = tags_generator(tit)
 
@@ -66,7 +66,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
                 ]
 
             ])
-            filed = os.path.basename(fpath)
+            filed = os.path.basename(file)
             filed = filed.replace("[1080p Web-DL]", "[720p x265]")
             fukpath = "downloads/" + filed
             caption = f"{name}"
