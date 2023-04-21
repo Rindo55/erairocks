@@ -72,7 +72,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,subtitle):
             caption = f"{filed}"
             caption = caption.replace("[1080p Web-DL]", "") 
             gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `{subtitle} ~ Subs`" + "\n" + "#Encoded #HEVC"
-            kayo_id = -1001948444792
+            kayo_id = -1001159872623
             x = await app.send_document(
 
                 kayo_id,
