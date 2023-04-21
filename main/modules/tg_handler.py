@@ -135,7 +135,6 @@ async def start_uploading(data):
         filed = filed.replace("[Erai-raws]", "")
         filed = filed.replace("[1080p][Multiple Subtitle]", "[1080p Web-DL]")
         filed = filed.replace("[1080p]", "[1080p Web-DL]")
-        fpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
         ghostname = ghostname.replace("[1080p]", "")
@@ -214,7 +213,7 @@ async def start_uploading(data):
         await status.edit(await status_text(f"Uploading {name }"),reply_markup=button1)
 
         message_id = int(msg.message_id) + 1
-        video = await upload_video(msg,fpath,file,id,tit,name,size) 
+        video = await upload_video(msg,fpath,id,tit,name,size) 
         try:
 
             os.remove("video.mkv")
