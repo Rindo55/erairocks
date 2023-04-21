@@ -94,4 +94,3 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
         except:
             pass
         return x.message_id
-
