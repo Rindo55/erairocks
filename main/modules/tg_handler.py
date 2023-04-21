@@ -166,7 +166,7 @@ async def start_uploading(data):
         subtitle = subtitle.replace("HUN", "Hungarian")
         subtitle = subtitle.replace("UKR", "Ukranian")
         main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
-        guessname = f"**{ghostname}**" + "\n" + "\n" + f"__({tit})__" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `{subtitles} ~ Subs` + "\n" + "\n" + "#Source #WebDL"
+        guessname = f"**{ghostname}**" + "\n" + "\n" + f"__({tit})__" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `{subtitles} ~ Subs`" + "\n" + "\n" + "#Source #WebDL"
         
         thumbnail = await generate_thumbnail(id,file)
 
