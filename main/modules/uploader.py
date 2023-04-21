@@ -69,7 +69,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,subtitle):
             filed = os.path.basename(file)
             filed = filed.replace("[1080p Web-DL]", "[720p x265]")
             fukpath = "downloads/" + filed
-            caption = f"{name}"
+            caption = f"{filed}"
             caption = caption.replace("[1080p Web-DL]", "") 
             gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `{subtitle} ~ Subs`" + "\n" + "#Encoded #HEVC"
             kayo_id = -1001948444792
