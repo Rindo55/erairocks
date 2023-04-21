@@ -16,9 +16,9 @@ def trim_title(title: str):
     title = title.replace("Shinka", "Shin Shinka")
     return title
 
-def trim_link(nyaa_infoHash: str):
+def trim_link(nyaa_infohash: str):
     magnet = "magnet:?xt=urn:btih:"
-    link = magnet + nyaa_infoHash
+    link = magnet + nyaa_infohash
 
 def parse():
     a = feedparser.parse("https://nyaa.si/?page=rss&q=SubsPlease%201080p")
