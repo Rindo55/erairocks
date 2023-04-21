@@ -33,10 +33,7 @@ from main.inline import button1
 
 async def upload_video(msg: Message,file,id,tit,name,ttl):
 
-    try:
-
-    
-
+    try:   
         fuk = isfile(file)
 
         if fuk:
@@ -69,11 +66,11 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
 
             ])
             filed = os.path.basename(file)
-            filed = filed.replace("[1080p]", "[720p x265]")
+            filed = filed.replace("[1080p][Multiple Subtitle]", "[720p x265] @animxt")
             fukpath = "downloads/" + filed
             caption = f"{name}"
-            caption = caption.replace("[1080p]", "") 
-            gcaption=f"**{caption}**" + "\n" + "✓  `720p x265 10Bit`" + "\n" + "✓  `English Sub`" + "\n" + f"__({tit})__" + "\n" + "#Encoded #HEVC"
+            caption = caption.replace("[1080p][Multiple Subtitle]", "") 
+            gcaption=f"**{caption}**" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"__({tit})__" + "\n" + "#Encoded #HEVC"
             kayo_id = -1001159872623
             x = await app.send_document(
 
