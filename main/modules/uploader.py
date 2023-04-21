@@ -87,55 +87,6 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
             thumb=thumbnail
 
             ) 
-        os.rename(file,fukpath)
-        files = {'file': open(fukpath, 'rb')}
-        nanix = await x.edit(gcaption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "Generating Link", parse_mode = "markdown")
-        callapi = requests.post("https://api.filechan.org/upload", files=files)
-        text = callapi.json()
-        long_url = text['data']['file']['url']['full']
-        api_url = f"http://ouo.io/api/jezWr0hG?s={long_url}"
-        result = requests.get(api_url)
-        nai_text = result.text
-        da_url = "https://da.gd/"
-        url = nai_text
-        shorten_url = f"{da_url}shorten"
-        response = requests.get(shorten_url, params={"url": url})
-        nyaa_text = response.text.strip()                                     
-        await asyncio.sleep(6)
-        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fukpath, 'rb')}).json()
-        directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
-        gofinal = requests.get(gotn_url)
-        go_text = gofinal.text
-        gourl = go_text
-        gofile_url = f"{da_url}shorten"
-        goresponse = requests.get(gofile_url, params={"url": gourl})
-        gofuk_text = goresponse.text.strip()
-        await asyncio.sleep(6)
-        krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
-        krakenxurl = krakenapi['data']['url']
-        krakentoken = krakenapi['data']['serverAccessToken']
-        params = {'serverAccessToken': krakentoken} 
-        krakenupload = requests.post(krakenxurl, files={'file': open(fukpath, 'rb')}, data=params).json()
-        krakenlink = krakenupload['data']['url']
-        krtn_url = f"http://ouo.io/api/jezWr0hG?s={krakenlink}"
-        krfinal = requests.get(krtn_url)
-        kr_text = krfinal.text
-        krurl = kr_text
-        krfile_url = f"{da_url}shorten"
-        krresponse = requests.get(krfile_url, params={"url": krurl})
-        krfuk_text = krresponse.text.strip()
-        output = f"""
-{gcaption}
-━━━━━━━━━━━━━━━━━━━
-**External Download Links**
-Filechan - {nyaa_text}
-Gofile - {gofuk_text} 
-KrakenFiles - {krfuk_text}"""
-        daze = await x.edit(output, parse_mode = "markdown")               
-    except Exception:
-       await app.send_message(message.chat.id, text="Something Went Wrong!")
     try:
 
             await r.delete()
