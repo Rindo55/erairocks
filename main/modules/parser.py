@@ -30,7 +30,7 @@ def parse():
         item = {}
         item['title'] = trim_title(i['title'])
         item['size'] = i['nyaa_size']
-        item['infoHash'] = i['nyaa_infoHash']
+        item['link'] = i['nyaa_infohash']
         data.append(item)
     data.reverse()
     return data
