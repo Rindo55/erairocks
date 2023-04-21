@@ -5,19 +5,15 @@ import aiohttp
 import requests
 import aiofiles
 
-
-from main.modules.utils import format_time, get_duration, get_epnum, get_filesize, status_text, tags_generator, get_messages, b64_to_str, str_to_b64, send_media_and_reply
+from main.modules.utils import format_time, get_duration, get_epnum, get_filesize, status_text, tags_generator
 
 from main.modules.anilist import get_anime_name
 
 from main.modules.anilist import get_anime_img
 
-from main.modules.db import present_user, add_user
 from main.modules.thumbnail import generate_thumbnail
 
 from config import UPLOADS_ID
-
-from pyrogram import Client, filters
 
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -78,7 +74,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
             caption = f"{name}"
             caption = caption.replace("(1080p)", "") 
             gcaption=f"**{caption}**" + "\n" + "✓  `720p x265 10Bit`" + "\n" + "✓  `English Sub`" + "\n" + f"__({tit})__" + "\n" + "#Encoded #HEVC"
-            kayo_id = -1001948444792
+            kayo_id = -1001159872623
             x = await app.send_document(
 
                 kayo_id,
@@ -107,19 +103,63 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
 
             )
 
-            )             
-            file_er_id = str(x.message_id)
-            share_link = f"https://t.me/zoroloverobot?start=animxt_{str_to_b64(file_er_id)}"
-            CH_edit = await app.edit_message_reply_markup(kayo_id, x.message_id,
-                                                          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
-                                                              "Telegram File", url=share_link)]]))
+            ) 
+        os.rename(file,fukpath)
+        files = {'file': open(fukpath, 'rb')}
+        nanix = await x.edit(gcaption + "\n" "━━━━━━━━━━━━━━━━━━━" + "\n" + "Generating Link", parse_mode = "markdown")
+        callapi = requests.post("https://api.filechan.org/upload", files=files)
+        text = callapi.json()
+        long_url = text['data']['file']['url']['full']
+        api_url = f"http://ouo.io/api/jezWr0hG?s={long_url}"
+        result = requests.get(api_url)
+        nai_text = result.text
+        da_url = "https://da.gd/"
+        url = nai_text
+        shorten_url = f"{da_url}shorten"
+        response = requests.get(shorten_url, params={"url": url})
+        nyaa_text = response.text.strip()                                     
+        await asyncio.sleep(6)
+        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
+        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fukpath, 'rb')}).json()
+        directlink = uploadxz["data"]["downloadPage"]    
+        gotn_url = f"http://ouo.io/api/jezWr0hG?s={directlink}"
+        gofinal = requests.get(gotn_url)
+        go_text = gofinal.text
+        gourl = go_text
+        gofile_url = f"{da_url}shorten"
+        goresponse = requests.get(gofile_url, params={"url": gourl})
+        gofuk_text = goresponse.text.strip()
+        await asyncio.sleep(6)
+        krakenapi = requests.get(url="https://krakenfiles.com/api/server/available").json()
+        krakenxurl = krakenapi['data']['url']
+        krakentoken = krakenapi['data']['serverAccessToken']
+        params = {'serverAccessToken': krakentoken} 
+        krakenupload = requests.post(krakenxurl, files={'file': open(fukpath, 'rb')}, data=params).json()
+        krakenlink = krakenupload['data']['url']
+        krtn_url = f"http://ouo.io/api/jezWr0hG?s={krakenlink}"
+        krfinal = requests.get(krtn_url)
+        kr_text = krfinal.text
+        krurl = kr_text
+        krfile_url = f"{da_url}shorten"
+        krresponse = requests.get(krfile_url, params={"url": krurl})
+        krfuk_text = krresponse.text.strip()
+        output = f"""
+{gcaption}
+━━━━━━━━━━━━━━━━━━━
+**External Download Links**
+Filechan - {nyaa_text}
+Gofile - {gofuk_text} 
+KrakenFiles - {krfuk_text}"""
+        daze = await x.edit(output, parse_mode = "markdown")               
     except Exception:
-            await app.send_message(kayo_id, text="Something Went Wrong!")
+       await app.send_message(message.chat.id, text="Something Went Wrong!")
     try:
 
             await r.delete()
 
             os.remove(file)
+            
+            os.remove(fukpath)
 
             os.remove(thumbnail)
 
@@ -128,21 +168,3 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
         pass
 
     return x.message_id
-
-@app.on_message(filters.command("start") & filters.private)
-async def start(bot, cmd: Message):
-    usr_cmd = cmd.text.split("_", 1)[-1]
-    kay_id = -1001948444792
-    if usr_cmd == "/start":
-       await cmd.reply_text("Yo baka!")
-    else:
-        try:
-            try:
-                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
-            except (Error, UnicodeDecodeError):
-                file_id = int(usr_cmd.split("_")[-1])
-            GetMessage = await app.get_messages(kay_id, message_ids=file_id)
-            message_ids = GetMessage.message_id
-            await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
-        except Exception as err:
-            await cmd.reply_text(f"Something went wrong!\n\n**Error:** `Bitch`")
