@@ -77,7 +77,7 @@ async def upload_video(msg: Message,fpath,file,id,tit,name,ttl):
 
                 kayo_id,
 
-            document=fpath,
+            document=file,
 
             caption=gcaption,
 
