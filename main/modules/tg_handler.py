@@ -110,7 +110,6 @@ async def start_uploading(data):
 
         name += f" @animxt." + ext
 
-        fpath = "downloads/" + name
         KAYO_ID = -1001948444792
         name = name.replace(f" @animxt.","").replace(ext,"").strip()
         id, img, tit = await get_anime_img(get_anime_name(title))
@@ -135,6 +134,7 @@ async def start_uploading(data):
         filed = filed.replace("[Erai-raws]", "")
         filed = filed.replace("[1080p][Multiple Subtitle]", "[1080p Web-DL]")
         filed = filed.replace("[1080p]", "[1080p Web-DL]")
+        fpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p][Multiple Subtitle]", "")
         ghostname = ghostname.replace("[1080p]", "")
