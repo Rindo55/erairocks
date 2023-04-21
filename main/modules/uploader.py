@@ -89,7 +89,11 @@ async def upload_video(msg: Message,file,id,tit,name,ttl):
             ) 
         try:
             await r.delete()
+
             os.remove(file)
+            
+            os.remove(fukpath)
+
             os.remove(thumbnail)
         except:
             pass
