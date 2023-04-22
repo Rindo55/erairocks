@@ -18,7 +18,7 @@ def trim_title(title: str):
 def parse():
     a = feedparser.parse("https://siftrss.com/f/D8mMbzpKvV")
     b = a["entries"]
-    b = b[0:3]
+    b = b[0:2]
     data = []    
 
     for i in b:
